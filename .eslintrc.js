@@ -5,6 +5,8 @@ module.exports = {
     '@vue/standard'
   ],
   rules: {
+    "template-curly-spacing" : "off",
+    indent : "off",
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development

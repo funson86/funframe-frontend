@@ -13,7 +13,7 @@ import { setToken, getToken } from '@/libs/util'
 
 export default {
   state: {
-    userName: '',
+    username: '',
     userId: '',
     avatarImgPath: '',
     token: getToken(),
@@ -32,8 +32,8 @@ export default {
     setUserId (state, id) {
       state.userId = id
     },
-    setUserName (state, name) {
-      state.userName = name
+    setUsername (state, name) {
+      state.username = name
     },
     setAccess (state, access) {
       state.access = access
@@ -74,11 +74,11 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, { userName, password }) {
-      userName = userName.trim()
+    handleLogin ({ commit }, { username, password }) {
+      username = username.trim()
       return new Promise((resolve, reject) => {
         login({
-          userName,
+          username,
           password
         }).then(res => {
           const data = res.data
@@ -109,10 +109,10 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {
-          getUserInfo(state.token).then(res => {
+          getUserInfo().then(res => {
             const data = res.data
             commit('setAvatar', data.avatar)
-            commit('setUserName', data.name)
+            commit('setUsername', data.username)
             commit('setUserId', data.user_id)
             commit('setAccess', data.access)
             commit('setHasGetInfo', true)
